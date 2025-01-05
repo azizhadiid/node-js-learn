@@ -1,9 +1,12 @@
-import chalk from 'chalk';
-import validator from 'validator';
+const {tulisPertanyaan, simpanContact} = require('./contacts');
 
-console.log(validator.isEmail('aziz@gamil.com'));
-console.log(validator.isMobilePhone('08123456789', 'id-ID'));
-console.log(chalk.white.bgYellow('Hello world!'));
 
-const pesan= chalk`Lorem ipsum dolor sit amet {bgBlack.red consectetur adipisicing} elit. Eos, nostrum.`;
-console.log(pesan);
+const main = async () => {
+    const nama = await tulisPertanyaan('Masukkan Nama Anda: ');
+    const email = await tulisPertanyaan('Masukkan Email Anda: ');
+    const noHp = await tulisPertanyaan('Masukkan No HP Anda: ');
+    
+    simpanContact(nama, email,noHp);
+};
+
+main();
